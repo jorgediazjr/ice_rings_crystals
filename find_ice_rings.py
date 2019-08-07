@@ -249,6 +249,43 @@ def plot(*args):
     show()
 
 
+def write_files(circle_1, circle_2,
+                circle_3, circle_4,
+                fname):
+    current_dir = os.getcwd()
+    dir_to_write = '/ICE_SPOTS'
+    if os.isdir(current_dir + dir_to_write):
+        os.chdir(current_dir + dir_to_write)
+        with open(fname + '_C1_SPOT.xds', 'w+') as f:
+            for point in circle_1:
+                f.write('{} {}\n'.format(point[0], point[1]))
+        with open(fname + '_C2_SPOT.xds', 'w+') as f:
+            for point in circle_2:
+                f.write('{} {}\n'.format(point[0], point[1]))
+        with open(fname + '_C3_SPOT.xds', 'w+') as f:
+            for point in circle_3:
+                f.write('{} {}\n'.format(point[0], point[1]))
+        with open(fname + '_C4_SPOT.xds', 'w+') as f:
+            for point in circle_4:
+                f.write('{} {}\n'.format(point[0], point[1]))
+    else:
+        os.mkdir(current_dir + dir_to_write)
+        os.chdir(current_dir + dir_to_write)
+        with open(fname + '_C1_SPOT.xds', 'w+') as f:
+            for point in circle_1:
+                f.write('{} {}\n'.format(point[0], point[1]))
+        with open(fname + '_C2_SPOT.xds', 'w+') as f:
+            for point in circle_2:
+                f.write('{} {}\n'.format(point[0], point[1]))
+        with open(fname + '_C3_SPOT.xds', 'w+') as f:
+            for point in circle_3:
+                f.write('{} {}\n'.format(point[0], point[1]))
+        with open(fname + '_C4_SPOT.xds', 'w+') as f:
+            for point in circle_4:
+                f.write('{} {}\n'.format(point[0], point[1]))
+    os.chdir(current_dir)
+
+
 def main():
     files = []
     with open(os.getcwd() + '/spot_files', 'r') as f:
@@ -261,7 +298,7 @@ def main():
         *\t{}\t\t*
         *-----------------------*
         '''
-        print(message.format(f.split('/')[4].upper()))
+        print(message.format(f.split('/')[5].upper()))
         start_time = time.time()
         pairs = read_spot_file(f)
         ordered_pairs = collections.OrderedDict(sorted(pairs.items()))
@@ -274,6 +311,11 @@ def main():
                                                        radius=1600)
         close_to_circ_4, circle_pts_4 = find_ice_rings(ordered_pairs,
                                                        radius=1800)
+        write_files(close_to_circ_1,
+                    close_to_circ_2,
+                    close_to_circ_3,
+                    close_to_circ_4,
+                    f.split('/')[5].upper())
         end_time = time.time()
         print("TIME TAKEN: {:.3f}".format(end_time-start_time))
         plot(ordered_pairs,
@@ -285,7 +327,7 @@ def main():
              circle_pts_2,
              circle_pts_3,
              circle_pts_4,
-             f.split('/')[4].upper())
+             f.split('/')[5].upper())
 
 
 if __name__ == '__main__':
