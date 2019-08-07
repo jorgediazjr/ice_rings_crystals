@@ -1,0 +1,195 @@
+DIALS (2018) Acta Cryst. D74, 85-97. https://doi.org/10.1107/S2059798317017235
+DIALS 2.dev.288-gbdbe68fc1
+The following parameters have been modified:
+
+input {
+  experiments = <image files>
+}
+
+Setting spotfinder.filter.min_spot_size=3
+Configuring spot finder from input parameters
+--------------------------------------------------------------------------------
+Finding strong spots in imageset 0
+--------------------------------------------------------------------------------
+
+
+Finding spots in image 1 to 150...
+Setting chunksize=25
+Extracting strong pixels from images
+ Using multiprocessing with 1 parallel job(s)
+
+Found 398 strong pixels on image 1
+Found 473 strong pixels on image 2
+Found 487 strong pixels on image 3
+Found 506 strong pixels on image 4
+Found 489 strong pixels on image 5
+Found 387 strong pixels on image 6
+Found 412 strong pixels on image 7
+Found 388 strong pixels on image 8
+Found 389 strong pixels on image 9
+Found 340 strong pixels on image 10
+Found 347 strong pixels on image 11
+Found 350 strong pixels on image 12
+Found 374 strong pixels on image 13
+Found 416 strong pixels on image 14
+Found 388 strong pixels on image 15
+Found 431 strong pixels on image 16
+Found 441 strong pixels on image 17
+Found 414 strong pixels on image 18
+Found 496 strong pixels on image 19
+Found 390 strong pixels on image 20
+Found 357 strong pixels on image 21
+Found 380 strong pixels on image 22
+Found 495 strong pixels on image 23
+Found 439 strong pixels on image 24
+Found 397 strong pixels on image 25
+Found 399 strong pixels on image 26
+Found 331 strong pixels on image 27
+Found 367 strong pixels on image 28
+Found 358 strong pixels on image 29
+Found 364 strong pixels on image 30
+Found 333 strong pixels on image 31
+Found 366 strong pixels on image 32
+Found 381 strong pixels on image 33
+Found 417 strong pixels on image 34
+Found 500 strong pixels on image 35
+Found 466 strong pixels on image 36
+Found 457 strong pixels on image 37
+Found 462 strong pixels on image 38
+Found 382 strong pixels on image 39
+Found 347 strong pixels on image 40
+Found 312 strong pixels on image 41
+Found 326 strong pixels on image 42
+Found 395 strong pixels on image 43
+Found 472 strong pixels on image 44
+Found 435 strong pixels on image 45
+Found 376 strong pixels on image 46
+Found 325 strong pixels on image 47
+Found 336 strong pixels on image 48
+Found 389 strong pixels on image 49
+Found 349 strong pixels on image 50
+Found 346 strong pixels on image 51
+Found 330 strong pixels on image 52
+Found 297 strong pixels on image 53
+Found 281 strong pixels on image 54
+Found 256 strong pixels on image 55
+Found 243 strong pixels on image 56
+Found 278 strong pixels on image 57
+Found 260 strong pixels on image 58
+Found 303 strong pixels on image 59
+Found 399 strong pixels on image 60
+Found 408 strong pixels on image 61
+Found 394 strong pixels on image 62
+Found 399 strong pixels on image 63
+Found 412 strong pixels on image 64
+Found 406 strong pixels on image 65
+Found 508 strong pixels on image 66
+Found 497 strong pixels on image 67
+Found 493 strong pixels on image 68
+Found 434 strong pixels on image 69
+Found 400 strong pixels on image 70
+Found 373 strong pixels on image 71
+Found 360 strong pixels on image 72
+Found 365 strong pixels on image 73
+Found 353 strong pixels on image 74
+Found 410 strong pixels on image 75
+Found 448 strong pixels on image 76
+Found 490 strong pixels on image 77
+Found 441 strong pixels on image 78
+Found 484 strong pixels on image 79
+Found 440 strong pixels on image 80
+Found 390 strong pixels on image 81
+Found 386 strong pixels on image 82
+Found 429 strong pixels on image 83
+Found 494 strong pixels on image 84
+Found 474 strong pixels on image 85
+Found 520 strong pixels on image 86
+Found 519 strong pixels on image 87
+Found 510 strong pixels on image 88
+Found 409 strong pixels on image 89
+Found 337 strong pixels on image 90
+Found 339 strong pixels on image 91
+Found 300 strong pixels on image 92
+Found 292 strong pixels on image 93
+Found 295 strong pixels on image 94
+Found 340 strong pixels on image 95
+Found 361 strong pixels on image 96
+Found 316 strong pixels on image 97
+Found 244 strong pixels on image 98
+Found 269 strong pixels on image 99
+Found 329 strong pixels on image 100
+Found 368 strong pixels on image 101
+Found 346 strong pixels on image 102
+Found 302 strong pixels on image 103
+Found 333 strong pixels on image 104
+Found 347 strong pixels on image 105
+Found 321 strong pixels on image 106
+Found 315 strong pixels on image 107
+Found 315 strong pixels on image 108
+Found 318 strong pixels on image 109
+Found 296 strong pixels on image 110
+Found 329 strong pixels on image 111
+Found 360 strong pixels on image 112
+Found 315 strong pixels on image 113
+Found 292 strong pixels on image 114
+Found 267 strong pixels on image 115
+Found 278 strong pixels on image 116
+Found 341 strong pixels on image 117
+Found 354 strong pixels on image 118
+Found 303 strong pixels on image 119
+Found 274 strong pixels on image 120
+Found 285 strong pixels on image 121
+Found 283 strong pixels on image 122
+Found 299 strong pixels on image 123
+Found 322 strong pixels on image 124
+Found 283 strong pixels on image 125
+Found 263 strong pixels on image 126
+Found 258 strong pixels on image 127
+Found 216 strong pixels on image 128
+Found 218 strong pixels on image 129
+Found 276 strong pixels on image 130
+Found 271 strong pixels on image 131
+Found 313 strong pixels on image 132
+Found 266 strong pixels on image 133
+Found 226 strong pixels on image 134
+Found 210 strong pixels on image 135
+Found 210 strong pixels on image 136
+Found 235 strong pixels on image 137
+Found 268 strong pixels on image 138
+Found 266 strong pixels on image 139
+Found 285 strong pixels on image 140
+Found 252 strong pixels on image 141
+Found 217 strong pixels on image 142
+Found 270 strong pixels on image 143
+Found 271 strong pixels on image 144
+Found 256 strong pixels on image 145
+Found 306 strong pixels on image 146
+Found 296 strong pixels on image 147
+Found 275 strong pixels on image 148
+Found 270 strong pixels on image 149
+Found 217 strong pixels on image 150
+
+Extracted 9336 spots
+Removed 7286 spots with size < 3 pixels
+Removed 48 spots with size > 100 pixels
+Calculated 2002 spot centroids
+Calculated 2002 spot intensities
+Filtered 1900 of 2002 spots by peak-centroid distance
+
+Histogram of per-image spot count for imageset 0:
+1900 spots found on 150 images (max 46 / bin)
+       **    *   *                                         *
+*      **    **  *  *               *                      *
+**    *** *  ** ** *******       ** *                    * *
+***  ****** *** ************  *******      *             ***
+*************************************   ****    **     * ***
+*************************************************** *  *****
+************************************************************
+************************************************************
+************************************************************
+************************************************************
+1                         image                          150
+
+--------------------------------------------------------------------------------
+Saved 1900 reflections to strong.pickle
+Time Taken: 85.303629

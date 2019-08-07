@@ -1,0 +1,245 @@
+DIALS (2018) Acta Cryst. D74, 85-97. https://doi.org/10.1107/S2059798317017235
+DIALS 2.dev.288-gbdbe68fc1
+The following parameters have been modified:
+
+input {
+  experiments = <image files>
+}
+
+Setting spotfinder.filter.min_spot_size=3
+Configuring spot finder from input parameters
+--------------------------------------------------------------------------------
+Finding strong spots in imageset 0
+--------------------------------------------------------------------------------
+
+
+Finding spots in image 1 to 100...
+Setting chunksize=20
+Extracting strong pixels from images
+ Using multiprocessing with 1 parallel job(s)
+
+Number of masked pixels for image 0: 637463
+Found 163 strong pixels on image 1
+Number of masked pixels for image 1: 637463
+Found 143 strong pixels on image 2
+Number of masked pixels for image 2: 637463
+Found 155 strong pixels on image 3
+Number of masked pixels for image 3: 637463
+Found 189 strong pixels on image 4
+Number of masked pixels for image 4: 637463
+Found 216 strong pixels on image 5
+Number of masked pixels for image 5: 637463
+Found 322 strong pixels on image 6
+Number of masked pixels for image 6: 637463
+Found 366 strong pixels on image 7
+Number of masked pixels for image 7: 637463
+Found 450 strong pixels on image 8
+Number of masked pixels for image 8: 637463
+Found 530 strong pixels on image 9
+Number of masked pixels for image 9: 637463
+Found 527 strong pixels on image 10
+Number of masked pixels for image 10: 637463
+Found 482 strong pixels on image 11
+Number of masked pixels for image 11: 637463
+Found 497 strong pixels on image 12
+Number of masked pixels for image 12: 637463
+Found 545 strong pixels on image 13
+Number of masked pixels for image 13: 637463
+Found 396 strong pixels on image 14
+Number of masked pixels for image 14: 637463
+Found 448 strong pixels on image 15
+Number of masked pixels for image 15: 637463
+Found 416 strong pixels on image 16
+Number of masked pixels for image 16: 637463
+Found 426 strong pixels on image 17
+Number of masked pixels for image 17: 637463
+Found 437 strong pixels on image 18
+Number of masked pixels for image 18: 637463
+Found 439 strong pixels on image 19
+Number of masked pixels for image 19: 637463
+Found 522 strong pixels on image 20
+Number of masked pixels for image 20: 637463
+Found 578 strong pixels on image 21
+Number of masked pixels for image 21: 637463
+Found 578 strong pixels on image 22
+Number of masked pixels for image 22: 637463
+Found 525 strong pixels on image 23
+Number of masked pixels for image 23: 637463
+Found 466 strong pixels on image 24
+Number of masked pixels for image 24: 637463
+Found 450 strong pixels on image 25
+Number of masked pixels for image 25: 637463
+Found 420 strong pixels on image 26
+Number of masked pixels for image 26: 637463
+Found 526 strong pixels on image 27
+Number of masked pixels for image 27: 637463
+Found 581 strong pixels on image 28
+Number of masked pixels for image 28: 637463
+Found 551 strong pixels on image 29
+Number of masked pixels for image 29: 637463
+Found 553 strong pixels on image 30
+Number of masked pixels for image 30: 637463
+Found 558 strong pixels on image 31
+Number of masked pixels for image 31: 637463
+Found 533 strong pixels on image 32
+Number of masked pixels for image 32: 637463
+Found 478 strong pixels on image 33
+Number of masked pixels for image 33: 637463
+Found 558 strong pixels on image 34
+Number of masked pixels for image 34: 637463
+Found 611 strong pixels on image 35
+Number of masked pixels for image 35: 637463
+Found 675 strong pixels on image 36
+Number of masked pixels for image 36: 637463
+Found 585 strong pixels on image 37
+Number of masked pixels for image 37: 637463
+Found 583 strong pixels on image 38
+Number of masked pixels for image 38: 637463
+Found 588 strong pixels on image 39
+Number of masked pixels for image 39: 637463
+Found 558 strong pixels on image 40
+Number of masked pixels for image 40: 637463
+Found 527 strong pixels on image 41
+Number of masked pixels for image 41: 637463
+Found 576 strong pixels on image 42
+Number of masked pixels for image 42: 637463
+Found 579 strong pixels on image 43
+Number of masked pixels for image 43: 637463
+Found 560 strong pixels on image 44
+Number of masked pixels for image 44: 637463
+Found 566 strong pixels on image 45
+Number of masked pixels for image 45: 637463
+Found 442 strong pixels on image 46
+Number of masked pixels for image 46: 637463
+Found 447 strong pixels on image 47
+Number of masked pixels for image 47: 637463
+Found 557 strong pixels on image 48
+Number of masked pixels for image 48: 637463
+Found 527 strong pixels on image 49
+Number of masked pixels for image 49: 637463
+Found 496 strong pixels on image 50
+Number of masked pixels for image 50: 637463
+Found 476 strong pixels on image 51
+Number of masked pixels for image 51: 637463
+Found 465 strong pixels on image 52
+Number of masked pixels for image 52: 637463
+Found 445 strong pixels on image 53
+Number of masked pixels for image 53: 637463
+Found 526 strong pixels on image 54
+Number of masked pixels for image 54: 637463
+Found 453 strong pixels on image 55
+Number of masked pixels for image 55: 637463
+Found 515 strong pixels on image 56
+Number of masked pixels for image 56: 637463
+Found 466 strong pixels on image 57
+Number of masked pixels for image 57: 637463
+Found 498 strong pixels on image 58
+Number of masked pixels for image 58: 637463
+Found 489 strong pixels on image 59
+Number of masked pixels for image 59: 637463
+Found 448 strong pixels on image 60
+Number of masked pixels for image 60: 637463
+Found 460 strong pixels on image 61
+Number of masked pixels for image 61: 637463
+Found 530 strong pixels on image 62
+Number of masked pixels for image 62: 637463
+Found 490 strong pixels on image 63
+Number of masked pixels for image 63: 637463
+Found 512 strong pixels on image 64
+Number of masked pixels for image 64: 637463
+Found 465 strong pixels on image 65
+Number of masked pixels for image 65: 637463
+Found 443 strong pixels on image 66
+Number of masked pixels for image 66: 637463
+Found 447 strong pixels on image 67
+Number of masked pixels for image 67: 637463
+Found 434 strong pixels on image 68
+Number of masked pixels for image 68: 637463
+Found 409 strong pixels on image 69
+Number of masked pixels for image 69: 637463
+Found 457 strong pixels on image 70
+Number of masked pixels for image 70: 637463
+Found 520 strong pixels on image 71
+Number of masked pixels for image 71: 637463
+Found 514 strong pixels on image 72
+Number of masked pixels for image 72: 637463
+Found 523 strong pixels on image 73
+Number of masked pixels for image 73: 637463
+Found 461 strong pixels on image 74
+Number of masked pixels for image 74: 637463
+Found 407 strong pixels on image 75
+Number of masked pixels for image 75: 637463
+Found 341 strong pixels on image 76
+Number of masked pixels for image 76: 637463
+Found 314 strong pixels on image 77
+Number of masked pixels for image 77: 637463
+Found 325 strong pixels on image 78
+Number of masked pixels for image 78: 637463
+Found 357 strong pixels on image 79
+Number of masked pixels for image 79: 637463
+Found 415 strong pixels on image 80
+Number of masked pixels for image 80: 637463
+Found 377 strong pixels on image 81
+Number of masked pixels for image 81: 637463
+Found 410 strong pixels on image 82
+Number of masked pixels for image 82: 637463
+Found 500 strong pixels on image 83
+Number of masked pixels for image 83: 637463
+Found 532 strong pixels on image 84
+Number of masked pixels for image 84: 637463
+Found 437 strong pixels on image 85
+Number of masked pixels for image 85: 637463
+Found 404 strong pixels on image 86
+Number of masked pixels for image 86: 637463
+Found 424 strong pixels on image 87
+Number of masked pixels for image 87: 637463
+Found 410 strong pixels on image 88
+Number of masked pixels for image 88: 637463
+Found 396 strong pixels on image 89
+Number of masked pixels for image 89: 637463
+Found 345 strong pixels on image 90
+Number of masked pixels for image 90: 637463
+Found 379 strong pixels on image 91
+Number of masked pixels for image 91: 637463
+Found 358 strong pixels on image 92
+Number of masked pixels for image 92: 637463
+Found 274 strong pixels on image 93
+Number of masked pixels for image 93: 637463
+Found 216 strong pixels on image 94
+Number of masked pixels for image 94: 637463
+Found 281 strong pixels on image 95
+Number of masked pixels for image 95: 637463
+Found 315 strong pixels on image 96
+Number of masked pixels for image 96: 637463
+Found 282 strong pixels on image 97
+Number of masked pixels for image 97: 637463
+Found 320 strong pixels on image 98
+Number of masked pixels for image 98: 637463
+Found 371 strong pixels on image 99
+Number of masked pixels for image 99: 637463
+Found 345 strong pixels on image 100
+
+Extracted 9194 spots
+Removed 7421 spots with size < 3 pixels
+Removed 59 spots with size > 100 pixels
+Calculated 1714 spot centroids
+Calculated 1714 spot intensities
+Filtered 1675 of 1714 spots by peak-centroid distance
+
+Histogram of per-image spot count for imageset 0:
+1675 spots found on 100 images (max 45 / bin)
+                * *  *  **  *                               
+                * *  *  *** *                              *
+                *** **  *** *       *      *      *        *
+      *     *   *********** **  * * *   *  *      * *      *
+     ** **  ** ************ ******* *** ****      *** *    *
+*   ****** *** ***************************** * ****** *    *
+********************************************** ********  * *
+************************************************************
+************************************************************
+************************************************************
+1                         image                          100
+
+--------------------------------------------------------------------------------
+Saved 1675 reflections to strong.pickle
+Time Taken: 57.605303
