@@ -1,5 +1,6 @@
 #!/Users/jdiaz/miniconda3/bin/python
 
+import numpy as np
 import time
 from matplotlib.pyplot import show
 import matplotlib.pyplot as plt
@@ -98,21 +99,23 @@ def check_ice_rings(p, radius=1600):
         all the points on the circumference that are connected
         to the points close to itself
     '''
+    close_to_circ = []
     points_from_circle = []
-    close_to_circ = [[0, 0], [0, 0]]
     min_distance_1 = 100
     center = [1600, 1600]
     points_on_circ = [[radius * math.sin(i) + center[0],
-                       radius * math.cos(i) + center[1]] for i in range(0, 361)]
+                       radius * math.cos(i) + center[1]] for i in np.arange(0, 361, 0.25)]
     for i, point in enumerate(points_on_circ):
         dist_1 = find_distance(p, point)
-        print("{} {:.2f}".format(i, dist_1))
         if dist_1 < min_distance_1:
             min_distance_1 = dist_1
-            close_to_circ = [p, point]
-            points_from_circle.append(point)
-    print("{}\t<---->\t{}".format(close_to_circ[0],
-                                  close_to_circ[1]))
+            print("{} {:.2f}".format(i, dist_1))
+            x2 = round(point[0], 2)
+            y2 = round(point[1], 2)
+            close_to_circ = [p, [x2, y2]]
+            points_from_circle = [x2, y2]
+    # print("CLOSE TO CIRCLE = {}".format(close_to_circ))
+    # print("POINTS FROM CIR = {}".format(points_from_circle))
     return close_to_circ, points_from_circle
 
 
@@ -141,14 +144,17 @@ def find_ice_rings(ordered_pairs, radius=1400):
     for index in ordered_pairs:
         for x_coord in ordered_pairs[index]:
             for y_coord in ordered_pairs[index][x_coord]:
-                p1, circle_points = check_ice_rings([x_coord, y_coord], radius)
-                print(p1)
-                if(p1[0][0] == 0 and p1[0][1] == 0 and
-                   p1[1][0] == 0 and p1[1][1]):
+                p1, circle_point = check_ice_rings([x_coord, y_coord], radius)
+                if not p1:  # empty list
                     continue
                 else:
+                    # these are pairs of points to plot line segments
+                    # p1 = [[x1, y1], [x2, y2]]
                     close_to_circ.append(p1)
-                    points_from_circle.extend(circle_points)
+                    print("CLOSE2CIRC={}".format(p1))
+                    # this is the point that is close to circle
+                    points_from_circle.append(circle_point)
+                    print("CIRCLPOINT={}".format(circle_point))
     return close_to_circ, points_from_circle
 
 
@@ -165,39 +171,45 @@ def plot(*args):
     '''
     fig, ax = plt.subplots()
 
+    # this is the plot of lines that are near given radius
     if args[1]:
         lc_1 = mc.LineCollection(args[1],
                                  colors=[(0, 1, 0, 1)],
                                  linewidths=0.50)
         ax.add_collection(lc_1)
 
-    if args[1]:
+    # this is the plot of lines that are near given radius
+    if args[2]:
         lc_2 = mc.LineCollection(args[2],
                                  colors=[(0, 1, 0, 1)],
                                  linewidths=0.50)
         ax.add_collection(lc_2)
 
-    if args[2]:
+    # this is the plot of lines that are near given radius
+    if args[3]:
         lc_3 = mc.LineCollection(args[3],
                                  colors=[(0, 1, 0, 1)],
                                  linewidths=0.50)
         ax.add_collection(lc_3)
 
-    if args[3]:
+    # this is the plot of lines that are near given radius
+    if args[4]:
         lc_4 = mc.LineCollection(args[4],
                                  colors=[(0, 1, 0, 1)],
                                  linewidths=0.50)
         ax.add_collection(lc_4)
 
+    # all ordered pairs from original SPOT.XDS file
     x_vals = []
     y_vals = []
-    for index in args[0]:  # all ordered pairs
+    for index in args[0]:
         for x_coord in args[0][index]:
             for y_coord in args[0][index][x_coord]:
                 x_vals.append(x_coord)
                 y_vals.append(y_coord)
     ax.scatter(x_vals, y_vals, s=0.2, color='blue')
 
+    # these are the points on the circumference of circle with given radius
     x_vals = []
     y_vals = []
     for point in args[5]:
@@ -205,6 +217,7 @@ def plot(*args):
         y_vals.append(point[1])
     ax.scatter(x_vals, y_vals, s=0.2, color='red')
 
+    # these are the points on the circumference of circle with given radius
     x_vals = []
     y_vals = []
     for point in args[6]:
@@ -212,6 +225,7 @@ def plot(*args):
         y_vals.append(point[1])
     ax.scatter(x_vals, y_vals, s=0.2, color='red')
 
+    # these are the points on the circumference of circle with given radius
     x_vals = []
     y_vals = []
     for point in args[7]:
@@ -219,6 +233,7 @@ def plot(*args):
         y_vals.append(point[1])
     ax.scatter(x_vals, y_vals, s=0.2, color='red')
 
+    # these are the points on the circumference of circle with given radius
     x_vals = []
     y_vals = []
     for point in args[8]:
@@ -226,25 +241,33 @@ def plot(*args):
         y_vals.append(point[1])
     ax.scatter(x_vals, y_vals, s=0.2, color='red')
 
-    circle_1 = plt.Circle((1600, 1600), 1000, lw=0.3,
+    radius = 1000
+    # circle with radius 1000
+    circle_1 = plt.Circle((1600, 1600), radius, lw=0.3,
                           color='black', fill=False)
     ax.add_artist(circle_1)
 
-    circle_2 = plt.Circle((1600, 1600), 1200, lw=0.3,
+    # circle with radius 1200
+    circle_2 = plt.Circle((1600, 1600), radius + 200, lw=0.3,
                           color='black', fill=False)
     ax.add_artist(circle_2)
 
-    circle_3 = plt.Circle((1600, 1600), 1400, lw=0.3,
+    # circle with radius 1400
+    circle_3 = plt.Circle((1600, 1600), radius + 400, lw=0.3,
                           color='black', fill=False)
     ax.add_artist(circle_3)
 
-    circle_4 = plt.Circle((1600, 1600), 1600, lw=0.3,
+    # circle with radius 1600
+    circle_4 = plt.Circle((1600, 1600), radius + 600, lw=0.3,
                           color='black', fill=False)
     ax.add_artist(circle_4)
 
-    circle_5 = plt.Circle((1600, 1600), 1800, lw=0.3,
+    # circle with radius 1800
+    circle_5 = plt.Circle((1600, 1600), radius + 800, lw=0.3,
                           color='black', fill=False)
     ax.add_artist(circle_5)
+
+    # title of folder
     ax.set_title(args[9])
     show()
 
@@ -254,35 +277,67 @@ def write_files(circle_1, circle_2,
                 fname):
     current_dir = os.getcwd()
     dir_to_write = '/ICE_SPOTS'
-    if os.isdir(current_dir + dir_to_write):
+    if os.path.exists(current_dir + dir_to_write):
         os.chdir(current_dir + dir_to_write)
-        with open(fname + '_C1_SPOT.xds', 'w+') as f:
+        with open(fname + '_1_SPOT.xds', 'w+') as f:
+            f.write('x1 y1 x2 y2\n')
             for point in circle_1:
-                f.write('{} {}\n'.format(point[0], point[1]))
-        with open(fname + '_C2_SPOT.xds', 'w+') as f:
+                f.write('{x1} {y1} {x2} {y2}\n'.format(x1=point[0][0],
+                                                       y1=point[0][1],
+                                                       x2=point[1][0],
+                                                       y2=point[1][1]))
+        with open(fname + '_2_SPOT.xds', 'w+') as f:
+            f.write('x1 y1 x2 y2\n')
             for point in circle_2:
-                f.write('{} {}\n'.format(point[0], point[1]))
-        with open(fname + '_C3_SPOT.xds', 'w+') as f:
+                f.write('{x1} {y1} {x2} {y2}\n'.format(x1=point[0][0],
+                                                       y1=point[0][1],
+                                                       x2=point[1][0],
+                                                       y2=point[1][1]))
+        with open(fname + '_3_SPOT.xds', 'w+') as f:
+            f.write('x1 y1 x2 y2\n')
             for point in circle_3:
-                f.write('{} {}\n'.format(point[0], point[1]))
-        with open(fname + '_C4_SPOT.xds', 'w+') as f:
+                f.write('{x1} {y1} {x2} {y2}\n'.format(x1=point[0][0],
+                                                       y1=point[0][1],
+                                                       x2=point[1][0],
+                                                       y2=point[1][1]))
+        with open(fname + '_4_SPOT.xds', 'w+') as f:
+            f.write('x1 y1 x2 y2\n')
             for point in circle_4:
-                f.write('{} {}\n'.format(point[0], point[1]))
+                f.write('{x1} {y1} {x2} {y2}\n'.format(x1=point[0][0],
+                                                       y1=point[0][1],
+                                                       x2=point[1][0],
+                                                       y2=point[1][1]))
     else:
         os.mkdir(current_dir + dir_to_write)
         os.chdir(current_dir + dir_to_write)
-        with open(fname + '_C1_SPOT.xds', 'w+') as f:
+        with open(fname + '_1_SPOT.xds', 'w+') as f:
+            f.write('x1 y1 x2 y2\n')
             for point in circle_1:
-                f.write('{} {}\n'.format(point[0], point[1]))
-        with open(fname + '_C2_SPOT.xds', 'w+') as f:
+                f.write('{x1} {y1} {x2} {y2}\n'.format(x1=point[0][0],
+                                                       y1=point[0][1],
+                                                       x2=point[1][0],
+                                                       y2=point[1][1]))
+        with open(fname + '_2_SPOT.xds', 'w+') as f:
+            f.write('x1 y1 x2 y2\n')
             for point in circle_2:
-                f.write('{} {}\n'.format(point[0], point[1]))
-        with open(fname + '_C3_SPOT.xds', 'w+') as f:
+                f.write('{x1} {y1} {x2} {y2}\n'.format(x1=point[0][0],
+                                                       y1=point[0][1],
+                                                       x2=point[1][0],
+                                                       y2=point[1][1]))
+        with open(fname + '_3_SPOT.xds', 'w+') as f:
+            f.write('x1 y1 x2 y2\n')
             for point in circle_3:
-                f.write('{} {}\n'.format(point[0], point[1]))
-        with open(fname + '_C4_SPOT.xds', 'w+') as f:
+                f.write('{x1} {y1} {x2} {y2}\n'.format(x1=point[0][0],
+                                                       y1=point[0][1],
+                                                       x2=point[1][0],
+                                                       y2=point[1][1]))
+        with open(fname + '_4_SPOT.xds', 'w+') as f:
+            f.write('x1 y1 x2 y2\n')
             for point in circle_4:
-                f.write('{} {}\n'.format(point[0], point[1]))
+                f.write('{x1} {y1} {x2} {y2}\n'.format(x1=point[0][0],
+                                                       y1=point[0][1],
+                                                       x2=point[1][0],
+                                                       y2=point[1][1]))
     os.chdir(current_dir)
 
 
@@ -291,6 +346,7 @@ def main():
     with open(os.getcwd() + '/spot_files', 'r') as f:
         for line in f:
             files.append(line.replace('\n', ''))
+    s_time = time.time()
     for f in files:
         message = '''
         *-----------------------*
@@ -303,12 +359,32 @@ def main():
         pairs = read_spot_file(f)
         ordered_pairs = collections.OrderedDict(sorted(pairs.items()))
         ordered_pairs = add_index_to_dict(ordered_pairs)
+        print('''
+              J----------------J
+              J       C1       J
+              J----------------J
+              ''')
         close_to_circ_1, circle_pts_1 = find_ice_rings(ordered_pairs,
                                                        radius=1200)
+        print('''
+              F----------------F
+              F       C2       F
+              F----------------F
+              ''')
         close_to_circ_2, circle_pts_2 = find_ice_rings(ordered_pairs,
                                                        radius=1400)
+        print('''
+              Y----------------Y
+              Y       C3       Y
+              Y----------------Y
+              ''')
         close_to_circ_3, circle_pts_3 = find_ice_rings(ordered_pairs,
                                                        radius=1600)
+        print('''
+              Z----------------Z
+              Z       C4       Z
+              Z----------------Z
+              ''')
         close_to_circ_4, circle_pts_4 = find_ice_rings(ordered_pairs,
                                                        radius=1800)
         write_files(close_to_circ_1,
@@ -317,17 +393,21 @@ def main():
                     close_to_circ_4,
                     f.split('/')[5].upper())
         end_time = time.time()
-        print("TIME TAKEN: {:.3f}".format(end_time-start_time))
-        plot(ordered_pairs,
-             close_to_circ_1,
-             close_to_circ_2,
-             close_to_circ_3,
-             close_to_circ_4,
-             circle_pts_1,
-             circle_pts_2,
-             circle_pts_3,
-             circle_pts_4,
-             f.split('/')[5].upper())
+        print("TIME TAKEN: {:.3f}s".format(end_time-start_time))
+        '''
+        plot(ordered_pairs,             # index 0
+             close_to_circ_1,           # index 1
+             close_to_circ_2,           # index 2
+             close_to_circ_3,           # index 3
+             close_to_circ_4,           # index 4
+             circle_pts_1,              # index 5
+             circle_pts_2,              # index 6
+             circle_pts_3,              # index 7
+             circle_pts_4,              # index 8
+             f.split('/')[5].upper())   # index 9
+        '''
+    e_time = time.time() - s_time
+    print("TOTAL TIME: {:.3f}s".format(e_time))
 
 
 if __name__ == '__main__':
