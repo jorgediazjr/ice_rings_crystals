@@ -275,72 +275,42 @@ def plot(*args):
     show()
 
 
-def write_files(circle_1, circle_2,
-                circle_3, circle_4,
-                fname):
+def write_files(circle_1, circle_2, circle_3, circle_4, fname):
     current_dir = os.getcwd()
     dir_to_write = '/ICE_SPOTS'
     if os.path.exists(current_dir + dir_to_write):
         os.chdir(current_dir + dir_to_write)
-        with open(fname + '_1_SPOT.xds', 'w+') as f:
-            f.write('x1 y1 x2 y2\n')
-            for point in circle_1:
-                f.write('{x1} {y1} {x2} {y2}\n'.format(x1=point[0][0],
-                                                       y1=point[0][1],
-                                                       x2=point[1][0],
-                                                       y2=point[1][1]))
-        with open(fname + '_2_SPOT.xds', 'w+') as f:
-            f.write('x1 y1 x2 y2\n')
-            for point in circle_2:
-                f.write('{x1} {y1} {x2} {y2}\n'.format(x1=point[0][0],
-                                                       y1=point[0][1],
-                                                       x2=point[1][0],
-                                                       y2=point[1][1]))
-        with open(fname + '_3_SPOT.xds', 'w+') as f:
-            f.write('x1 y1 x2 y2\n')
-            for point in circle_3:
-                f.write('{x1} {y1} {x2} {y2}\n'.format(x1=point[0][0],
-                                                       y1=point[0][1],
-                                                       x2=point[1][0],
-                                                       y2=point[1][1]))
-        with open(fname + '_4_SPOT.xds', 'w+') as f:
-            f.write('x1 y1 x2 y2\n')
-            for point in circle_4:
-                f.write('{x1} {y1} {x2} {y2}\n'.format(x1=point[0][0],
-                                                       y1=point[0][1],
-                                                       x2=point[1][0],
-                                                       y2=point[1][1]))
     else:
         os.mkdir(current_dir + dir_to_write)
         os.chdir(current_dir + dir_to_write)
-        with open(fname + '_1_SPOT.xds', 'w+') as f:
-            f.write('x1 y1 x2 y2\n')
-            for point in circle_1:
-                f.write('{x1} {y1} {x2} {y2}\n'.format(x1=point[0][0],
-                                                       y1=point[0][1],
-                                                       x2=point[1][0],
-                                                       y2=point[1][1]))
-        with open(fname + '_2_SPOT.xds', 'w+') as f:
-            f.write('x1 y1 x2 y2\n')
-            for point in circle_2:
-                f.write('{x1} {y1} {x2} {y2}\n'.format(x1=point[0][0],
-                                                       y1=point[0][1],
-                                                       x2=point[1][0],
-                                                       y2=point[1][1]))
-        with open(fname + '_3_SPOT.xds', 'w+') as f:
-            f.write('x1 y1 x2 y2\n')
-            for point in circle_3:
-                f.write('{x1} {y1} {x2} {y2}\n'.format(x1=point[0][0],
-                                                       y1=point[0][1],
-                                                       x2=point[1][0],
-                                                       y2=point[1][1]))
-        with open(fname + '_4_SPOT.xds', 'w+') as f:
-            f.write('x1 y1 x2 y2\n')
-            for point in circle_4:
-                f.write('{x1} {y1} {x2} {y2}\n'.format(x1=point[0][0],
-                                                       y1=point[0][1],
-                                                       x2=point[1][0],
-                                                       y2=point[1][1]))
+    with open(fname + '_1_SPOT.xds', 'w+') as f:
+        f.write('x1 y1 x2 y2\n')
+        for point in circle_1:
+            f.write('{x1} {y1} {x2} {y2}\n'.format(x1=point[0][0],
+                                                   y1=point[0][1],
+                                                   x2=point[1][0],
+                                                   y2=point[1][1]))
+    with open(fname + '_2_SPOT.xds', 'w+') as f:
+        f.write('x1 y1 x2 y2\n')
+        for point in circle_2:
+            f.write('{x1} {y1} {x2} {y2}\n'.format(x1=point[0][0],
+                                                   y1=point[0][1],
+                                                   x2=point[1][0],
+                                                   y2=point[1][1]))
+    with open(fname + '_3_SPOT.xds', 'w+') as f:
+        f.write('x1 y1 x2 y2\n')
+        for point in circle_3:
+            f.write('{x1} {y1} {x2} {y2}\n'.format(x1=point[0][0],
+                                                   y1=point[0][1],
+                                                   x2=point[1][0],
+                                                   y2=point[1][1]))
+    with open(fname + '_4_SPOT.xds', 'w+') as f:
+        f.write('x1 y1 x2 y2\n')
+        for point in circle_4:
+            f.write('{x1} {y1} {x2} {y2}\n'.format(x1=point[0][0],
+                                                   y1=point[0][1],
+                                                   x2=point[1][0],
+                                                   y2=point[1][1]))
     os.chdir(current_dir)
 
 
