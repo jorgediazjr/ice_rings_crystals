@@ -169,8 +169,7 @@ def plot(*args):
     args: list
         check main() for specific names on each element in args
     '''
-    fig, ax = plt.subplots()
-
+    fig, ax = plt.subplots(figsize=(7, 7))
     # this is the plot of lines that are near given radius
     if args[1]:
         lc_1 = mc.LineCollection(args[1],
@@ -342,11 +341,27 @@ def write_files(circle_1, circle_2,
 
 
 def main():
+    s_time = time.time()
+    xds_spot = '/xds_spot_files'
+    dials_spot = '/dials_spot_files'
+    while True:
+        print("Which program do you want?\n1. {}\n2. {}".format(xds_spot,
+                                                                dials_spot))
+        choice = int(input())
+        if choice == 1:
+            program = xds_spot
+            index = 4
+            break
+        elif choice == 2:
+            program = dials_spot
+            index = 4
+            break
+
     files = []
-    with open(os.getcwd() + '/spot_files', 'r') as f:
+    with open(os.getcwd() + program, 'r') as f:
         for line in f:
             files.append(line.replace('\n', ''))
-    s_time = time.time()
+    files.sort()
     for f in files:
         message = '''
         *-----------------------*
@@ -354,7 +369,7 @@ def main():
         *\t{}\t\t*
         *-----------------------*
         '''
-        print(message.format(f.split('/')[5].upper()))
+        print(message.format(f.split('/')[index].upper()))
         start_time = time.time()
         pairs = read_spot_file(f)
         ordered_pairs = collections.OrderedDict(sorted(pairs.items()))
@@ -391,10 +406,9 @@ def main():
                     close_to_circ_2,
                     close_to_circ_3,
                     close_to_circ_4,
-                    f.split('/')[5].upper())
+                    f.split('/')[index].upper())
         end_time = time.time()
         print("TIME TAKEN: {:.3f}s".format(end_time-start_time))
-        '''
         plot(ordered_pairs,             # index 0
              close_to_circ_1,           # index 1
              close_to_circ_2,           # index 2
@@ -404,10 +418,9 @@ def main():
              circle_pts_2,              # index 6
              circle_pts_3,              # index 7
              circle_pts_4,              # index 8
-             f.split('/')[5].upper())   # index 9
-        '''
-    e_time = time.time() - s_time
-    print("TOTAL TIME: {:.3f}s".format(e_time))
+             f.split('/')[index].upper())   # index 9
+    elapsed_time = time.strftime("%H:%M:%S", time.gmtime(time.time() - s_time))
+    print("TOTAL TIME: {}".format(elapsed_time))
 
 
 if __name__ == '__main__':

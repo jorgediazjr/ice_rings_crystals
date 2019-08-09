@@ -1,9 +1,0 @@
-DIALS (2018) Acta Cryst. D74, 85-97. https://doi.org/10.1107/S2059798317017235
-DIALS 2.dev.288-gbdbe68fc1
-The following parameters have been modified:
-
-format = mtz sadabs nxs mmcif mosflm *xds best xds_ascii json
-input {
-  reflections = strong.pickle
-}
-
