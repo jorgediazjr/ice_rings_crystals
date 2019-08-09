@@ -78,7 +78,7 @@ def find_distance(p, q):
     return dist
 
 
-def check_ice_rings(p, radius=1600):
+def check_ice_rings(p, points_on_circ):
     ''' checks for point close to ice ring
 
     Parameters
@@ -99,23 +99,21 @@ def check_ice_rings(p, radius=1600):
         all the points on the circumference that are connected
         to the points close to itself
     '''
-    close_to_circ = []
-    points_from_circle = []
+    close_to_circ = []         # these are for the ice rings
+    points_from_circle = []    # these are for the actual pts on circle
     min_distance_1 = 100
-    center = [1600, 1600]
-    points_on_circ = [[radius * math.sin(i) + center[0],
-                       radius * math.cos(i) + center[1]] for i in np.arange(0, 361, 0.25)]
+
+    # find the shortest distance between point p
+    # and a point on the circle
     for i, point in enumerate(points_on_circ):
         dist_1 = find_distance(p, point)
         if dist_1 < min_distance_1:
             min_distance_1 = dist_1
-            print("{} {:.2f}".format(i, dist_1))
+            print("{}| Distance: {:.2f}".format(i, dist_1))
             x2 = round(point[0], 2)
             y2 = round(point[1], 2)
             close_to_circ = [p, [x2, y2]]
             points_from_circle = [x2, y2]
-    # print("CLOSE TO CIRCLE = {}".format(close_to_circ))
-    # print("POINTS FROM CIR = {}".format(points_from_circle))
     return close_to_circ, points_from_circle
 
 
@@ -141,20 +139,26 @@ def find_ice_rings(ordered_pairs, radius=1400):
     '''
     close_to_circ = []
     points_from_circle = []
+
+    center = [1600, 1600]
+    points_on_circ = [[radius * math.sin(i) + center[0],
+                       radius * math.cos(i) + center[1]]
+                      for i in np.arange(0, 361, 0.25)]
     for index in ordered_pairs:
         for x_coord in ordered_pairs[index]:
             for y_coord in ordered_pairs[index][x_coord]:
-                p1, circle_point = check_ice_rings([x_coord, y_coord], radius)
+                p1, circle_point = check_ice_rings([x_coord, y_coord],
+                                                   points_on_circ)
                 if not p1:  # empty list
                     continue
                 else:
-                    # these are pairs of points to plot line segments
-                    # p1 = [[x1, y1], [x2, y2]]
+                    # p1: these are pairs of points to plot line segments
+                    # of the form [[x1, y1], [x2, y2]]
                     close_to_circ.append(p1)
-                    print("CLOSE2CIRC={}".format(p1))
                     # this is the point that is close to circle
                     points_from_circle.append(circle_point)
-                    print("CIRCLPOINT={}".format(circle_point))
+                    print("Ice ring pts = {}".format(p1))
+                    print("Circle point = {}".format(circle_point))
     return close_to_circ, points_from_circle
 
 
@@ -169,7 +173,7 @@ def plot(*args):
     args: list
         check main() for specific names on each element in args
     '''
-    fig, ax = plt.subplots(figsize=(7, 7))
+    fig, ax = plt.subplots(figsize=(6, 6))
     # this is the plot of lines that are near given radius
     if args[1]:
         lc_1 = mc.LineCollection(args[1],
@@ -242,27 +246,27 @@ def plot(*args):
 
     radius = 1000
     # circle with radius 1000
-    circle_1 = plt.Circle((1600, 1600), radius, lw=0.3,
+    circle_1 = plt.Circle((1600, 1600), radius, lw=0.1,
                           color='black', fill=False)
     ax.add_artist(circle_1)
 
     # circle with radius 1200
-    circle_2 = plt.Circle((1600, 1600), radius + 200, lw=0.3,
+    circle_2 = plt.Circle((1600, 1600), radius + 200, lw=0.1,
                           color='black', fill=False)
     ax.add_artist(circle_2)
 
     # circle with radius 1400
-    circle_3 = plt.Circle((1600, 1600), radius + 400, lw=0.3,
+    circle_3 = plt.Circle((1600, 1600), radius + 400, lw=0.1,
                           color='black', fill=False)
     ax.add_artist(circle_3)
 
     # circle with radius 1600
-    circle_4 = plt.Circle((1600, 1600), radius + 600, lw=0.3,
+    circle_4 = plt.Circle((1600, 1600), radius + 600, lw=0.1,
                           color='black', fill=False)
     ax.add_artist(circle_4)
 
     # circle with radius 1800
-    circle_5 = plt.Circle((1600, 1600), radius + 800, lw=0.3,
+    circle_5 = plt.Circle((1600, 1600), radius + 800, lw=0.1,
                           color='black', fill=False)
     ax.add_artist(circle_5)
 
@@ -363,62 +367,42 @@ def main():
             files.append(line.replace('\n', ''))
     files.sort()
     for f in files:
+        name = f.split('/')[index].upper()
         message = '''
         *-----------------------*
         *\tPROCESSING\t*
         *\t{}\t\t*
         *-----------------------*
         '''
-        print(message.format(f.split('/')[index].upper()))
+        print(message.format(name))
         start_time = time.time()
         pairs = read_spot_file(f)
         ordered_pairs = collections.OrderedDict(sorted(pairs.items()))
         ordered_pairs = add_index_to_dict(ordered_pairs)
-        print('''
-              J----------------J
-              J       C1       J
-              J----------------J
-              ''')
         close_to_circ_1, circle_pts_1 = find_ice_rings(ordered_pairs,
                                                        radius=1200)
-        print('''
-              F----------------F
-              F       C2       F
-              F----------------F
-              ''')
         close_to_circ_2, circle_pts_2 = find_ice_rings(ordered_pairs,
                                                        radius=1400)
-        print('''
-              Y----------------Y
-              Y       C3       Y
-              Y----------------Y
-              ''')
         close_to_circ_3, circle_pts_3 = find_ice_rings(ordered_pairs,
                                                        radius=1600)
-        print('''
-              Z----------------Z
-              Z       C4       Z
-              Z----------------Z
-              ''')
         close_to_circ_4, circle_pts_4 = find_ice_rings(ordered_pairs,
                                                        radius=1800)
-        write_files(close_to_circ_1,
-                    close_to_circ_2,
-                    close_to_circ_3,
-                    close_to_circ_4,
-                    f.split('/')[index].upper())
-        end_time = time.time()
-        print("TIME TAKEN: {:.3f}s".format(end_time-start_time))
-        plot(ordered_pairs,             # index 0
-             close_to_circ_1,           # index 1
-             close_to_circ_2,           # index 2
-             close_to_circ_3,           # index 3
-             close_to_circ_4,           # index 4
-             circle_pts_1,              # index 5
-             circle_pts_2,              # index 6
-             circle_pts_3,              # index 7
-             circle_pts_4,              # index 8
-             f.split('/')[index].upper())   # index 9
+
+        write_files(close_to_circ_1, close_to_circ_2,
+                    close_to_circ_3, close_to_circ_4,
+                    name)
+        print("TIME TAKEN: {:.3f}s".format(time.time() - start_time))
+        plot(ordered_pairs,     # index 0
+             close_to_circ_1,   # index 1
+             close_to_circ_2,   # index 2
+             close_to_circ_3,   # index 3
+             close_to_circ_4,   # index 4
+             circle_pts_1,      # index 5
+             circle_pts_2,      # index 6
+             circle_pts_3,      # index 7
+             circle_pts_4,      # index 8
+             name)              # index 9
+
     elapsed_time = time.strftime("%H:%M:%S", time.gmtime(time.time() - s_time))
     print("TOTAL TIME: {}".format(elapsed_time))
 
