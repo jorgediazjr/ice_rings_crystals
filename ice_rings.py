@@ -319,8 +319,8 @@ def main():
     xds_spot = '/xds_spot_files'
     dials_spot = '/dials_spot_files'
     while True:
-        print("Which program do you want?\n1. {}\n2. {}".format(xds_spot,
-                                                                dials_spot))
+        print("Which program do you want?\n1. {}\n2. {}".format(xds_spot.replace('/',''),
+                                                                dials_spot.replace('/','')))
         choice = int(input())
         if choice == 1:
             program = xds_spot
@@ -362,6 +362,7 @@ def main():
                     close_to_circ_3, close_to_circ_4,
                     name)
         print("TIME TAKEN: {:.3f}s".format(time.time() - start_time))
+        '''
         plot(ordered_pairs,     # index 0
              close_to_circ_1,   # index 1
              close_to_circ_2,   # index 2
@@ -372,6 +373,7 @@ def main():
              circle_pts_3,      # index 7
              circle_pts_4,      # index 8
              name)              # index 9
+        '''
 
     elapsed_time = time.strftime("%H:%M:%S", time.gmtime(time.time() - s_time))
     print("TOTAL TIME: {}".format(elapsed_time))
