@@ -109,7 +109,7 @@ def check_ice_rings(p, points_on_circ):
         dist_1 = find_distance(p, point)
         if dist_1 < min_distance_1:
             min_distance_1 = dist_1
-            print("{}| Distance: {:.2f}".format(i, dist_1))
+            print("{}: {:.2f}".format(i, dist_1))
             x2 = round(point[0], 2)
             y2 = round(point[1], 2)
             close_to_circ = [p, [x2, y2]]
